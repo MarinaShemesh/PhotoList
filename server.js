@@ -5,6 +5,6 @@ app.use(express.static('public'));
 app.use(express.static('node_modules'));
 
 app.listen(8000, function() {
-  console.log(" Ears open on 8000.")
+  console.log("Ears open on 8000.")
 
 });

@@ -1,16 +1,17 @@
 {
-  "name": "reddit-fun",
+  "name": "photolist",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Marina Shemesh",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.2",
     "bootstrap": "^3.3.7",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "font-awesome": "^4.7.0"
   }
 }
