@@ -3,38 +3,70 @@
 <head>
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+   <!--  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 </head>
 
-<body ng-app="beerList">
+<body ng-app="photoList" ng-controller="mainController">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h1 class="text-center">BeerList</h1>
+                <h1 class="text-center"><i class="fa fa-camera-retro" aria-hidden="true"></i>PhotoList</h1>
+                <i class="fa fa-camera-retro" aria-hidden="true"></i>
                 <div class="page-header">
                 </div>
-                <!-- render beers here -->
-                <form ng-submit="addBeer()">
-                    <h3>Add a new beer</h3>
+                <!-- render photos here -->
+                <form ng-submit="addPhoto()">
+                    <h3>Add a new photo</h3>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Beer Name" ng-model="name"></input>
+                        <input type="text" class="form-control" placeholder="Photo Name" ng-model="name"></input>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Style" ng-model="style"></input>
+                        <input type="text" class="form-control" placeholder="Style" ng-model="type"></input>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="ABV" ng-model="abv"></input>
+                        <input type="text" class="form-control" placeholder="Location" ng-model="location"></input>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Image URL" ng-model="image"></input>
                     </div>
-                    <button type="button" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-danger" ng-click="addPhoto(newPhoto)">Add</button>
                 </form>
             </div>
         </div>
+     <div class="row-list" ng-repeat="photo in photos">
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img class="pic" ng-src="{{photo.image}}" style="height:250px;" alt="...">
+                     <div class="caption">
+
+                        <h3>{{photo.name}}</h3>
+                        <input class="star" type="checkbox"/>
+                        <label for="st1" ng-click="rating($index, 5)"></label>
+                        <input class="star" type="checkbox" />
+                        <label for="st2" ng-click="rating($index, 4)"></label>
+                        <input class="star" type="checkbox" >
+                        <label for="st3" ng-click="rating($index, 3)"></label>
+                        <input class="star" type="checkbox" />
+                        <label for="st4" ng-click="rating($index, 2)"></label>
+                        <input class="star" type="checkbox" />
+                        <label for="st5" ng-click="rating($index, 1)"></label>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p><strong>Type of photography:</strong> {{photo.type}}</p>
+                        <p>Location: {{photo.location}}</p>
+                        <p>Average rating: {{photo.avRate}}</p>
+                        <p><a href="#" class="btn btn-primary" ng-click="removePhoto($index)" role="button">Delete</a></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="angular/angular.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/services/beers.js"></script>
+    <script src="js/services/photoFactory.js"></script>
     <script src="js/controllers/mainController.js"></script>
 </body>
 
