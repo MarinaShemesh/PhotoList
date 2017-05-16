@@ -19,7 +19,7 @@ app.factory('photoFactory', function() {
         },
 
         {
-            name: "Fern Tango",
+            name: "Fern tango",
             type: "Patterns",
             location: "Ramat haNadiv",
             image: "https://scontent.fhfa2-1.fna.fbcdn.net/v/t1.0-9/14479783_1340183922673391_1955881069940096038_n.jpg?oh=d66d8bb04bbf5e543ed946de15ac7a3c&oe=59B02F4F",
@@ -45,14 +45,34 @@ var addPhoto = function (newPhoto) {
     };
 
 var removePhoto = function($index){
-    photos.splice($index,1);  
-    }
+    photos.splice($index,1); 
 
+    };
+
+var rating = function ($index, value) {
+        console.log($index, value);
+        photos[$index].rating.push(value);
+        console.log(photos);
+        getRate($index)
+    };
+
+var getRate = function ($index) {
+        var total = 0;
+        console.log("hey");
+        for (var i = 0; i < photos[$index].rating.length; i++) {
+
+            total += photos[$index].rating[i];
+            console.log(total);
+        }
+        photos[$index].avRate = (total / photos[$index].rating.length).toFixed(2);
+    };
 
 
     return {
       photos: photos,
       addPhoto: addPhoto,
       removePhoto: removePhoto,
+      rating: rating,
+      getRate: getRate,
     }
 });

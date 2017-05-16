@@ -3,6 +3,10 @@ app.controller("mainController", ["$scope", "photoFactory", function ($scope, ph
      $scope.photos = photoFactory.photos;
      $scope.addPhoto = photoFactory.addPhoto;   
      $scope.removePhoto = photoFactory.removePhoto;
+     $scope.rating = photoFactory.rating;
+     $scope.getRate = photoFactory.getRate;
+     $scope.avg = photoFactory.avg;
+     $scope.addAverRate = photoFactory.addAverRate;
 
         $scope.addPhoto = function() {
          var newPhoto = {
@@ -15,5 +19,6 @@ app.controller("mainController", ["$scope", "photoFactory", function ($scope, ph
         };
         photoFactory.addPhoto(newPhoto);
     }
+
 
 }]);
